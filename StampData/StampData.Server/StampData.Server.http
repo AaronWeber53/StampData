@@ -1,0 +1,6 @@
+@StampData.Server_HostAddress = http://localhost:5191
+
+GET {{StampData.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
