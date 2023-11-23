@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StampData.Server", "StampData.Server\StampData.Server.csproj", "{C13C6B00-3217-4BBC-855D-BA6F025AB738}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StampData.Server", "StampData.Server\StampData.Server.csproj", "{C13C6B00-3217-4BBC-855D-BA6F025AB738}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "stampdata.client", "stampdata.client\stampdata.client.esproj", "{267EB7BE-D847-40AA-B4CB-67ADBC86D41B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{A379697B-145B-4378-9C6B-64097229ADB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{267EB7BE-D847-40AA-B4CB-67ADBC86D41B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{267EB7BE-D847-40AA-B4CB-67ADBC86D41B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{267EB7BE-D847-40AA-B4CB-67ADBC86D41B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A379697B-145B-4378-9C6B-64097229ADB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A379697B-145B-4378-9C6B-64097229ADB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A379697B-145B-4378-9C6B-64097229ADB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A379697B-145B-4378-9C6B-64097229ADB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

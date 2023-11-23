@@ -1,0 +1,13 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.yearfilter{
+    justify-content:center;
+}
+
+.filterbox {
+    align-items: center;
+}

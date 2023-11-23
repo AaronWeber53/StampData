@@ -3,4 +3,7 @@
 GET {{StampData.Server_HostAddress}}/weatherforecast/
 Accept: application/json
 
+GET {{StampData.Server_HostAddress}}/api/stamp/
+Accept: application/json
+
 ###
