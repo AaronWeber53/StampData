@@ -1,3 +1,5 @@
 
 StampData/.vs/*
 StampData/StampData.Server/obj/*
+StampData/StampData.Server/bin/*
+StampData/stampdata.client/obj/*
