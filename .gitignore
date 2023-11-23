@@ -3,3 +3,4 @@ StampData/.vs/*
 StampData/StampData.Server/obj/*
 StampData/StampData.Server/bin/*
 StampData/stampdata.client/obj/*
+StampData/stampdata.client/stampdata.client.esproj.user
