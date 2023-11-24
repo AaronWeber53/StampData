@@ -5,6 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StampModule } from './stamp/stamp.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavBarService } from './shared/nav-bar.service';
 
 @NgModule({
   declarations: [
@@ -13,9 +15,10 @@ import { StampModule } from './stamp/stamp.module';
   imports: [
     BrowserModule, HttpClientModule,
     AppRoutingModule,
-    StampModule
+    StampModule,
+    NgbModule
   ],
-  providers: [],
+  providers: [NavBarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

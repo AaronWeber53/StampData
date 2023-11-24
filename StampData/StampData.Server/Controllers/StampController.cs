@@ -38,7 +38,7 @@ namespace StampData.Server.Controllers
 
         // POST <StampController>
         [HttpPost]
-        public void Post([FromBody] Stamp stamp)
+        public void Post([FromForm] Stamp stamp)
         {
             StampInformationList.Get.AddStamp(stamp);
         }
