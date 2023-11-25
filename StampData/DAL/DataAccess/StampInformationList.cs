@@ -68,7 +68,7 @@ namespace DAL.DataAccess
         {
             if (!StampList.Any(s => s.Equals(stamp)))
             {
-                int largestIndex = StampList.Count == 0 ? 1: StampList.Max(s => s.ID);
+                int largestIndex = StampList.Count == 0 ? 1: StampList.Max(s => s.ID.Value);
                 stamp.ID = ++largestIndex;
                 StampList.Add(stamp);
                 Save();

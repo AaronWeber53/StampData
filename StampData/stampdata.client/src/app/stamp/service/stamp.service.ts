@@ -23,8 +23,21 @@ export class StampService {
   }
 
   addStamp(stamp: Stamp) {
-    let options = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post('/api/stamp', stamp, { headers: options });
+    let options = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
+
+    var formData = new FormData();
+    if (stamp.image) {
+      let type = stamp.image.name.substr(stamp.image.name.lastIndexOf('.') + 1)
+      if (type == 'jpg' || type == 'png' || type == 'jpeg') {
+        formData.append('image', stamp.image);
+      }
+    }
+    formData.append('scottNumber', stamp.scottNumber);
+    formData.append('country', stamp.country);
+    formData.append('year', stamp.year.toString());
+    formData.append('description', stamp.description);
+    formData.append('imageUrl', stamp.imageUrl);
+    return this.http.post('/api/stamp', formData);
   }
 
   updateStamp(stamp: Stamp) {

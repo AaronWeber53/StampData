@@ -15,6 +15,10 @@ export class StampCardComponent implements OnInit  {
   }
   @Input({ required: true }) stamp: Stamp = new Stamp();
 
+  get imageURL() {
+    return '/api/stamp/GetImage/' + this.stamp.id;
+  }
+
   OpenDetails($event: any) {
     const modalRef = this.modalService.open(StampModalComponent);
     modalRef.componentInstance.stamp = this.stamp;

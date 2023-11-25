@@ -61,9 +61,13 @@ export class StampModalComponent implements OnInit {
     this.stamp.scottNumber = this.form?.scottNumber?.value ?? '';
     this.stamp.country = this.form?.country?.value ?? '';
     this.stamp.year = this.form?.year?.value ?? 0;
-    this.stamp.image = this.form?.image?.value ?? '';
+    if (this.form?.image?.value) {
+      this.stamp.image = this.form?.image?.value;
+    }
     this.stamp.description = this.form?.description?.value ?? '';
-    this.stampService.updateOrAddStamp(this.stamp).subscribe((data) => this.activeModal.close());
+    this.stampService.updateOrAddStamp(this.stamp).subscribe(
+      (data) => (this.activeModal.close())
+    );
     
   }
 }

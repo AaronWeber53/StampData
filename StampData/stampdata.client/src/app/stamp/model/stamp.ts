@@ -4,9 +4,10 @@ export class Stamp {
     Object.assign(this, init);
   }
   public id: number | undefined;
-  public scottNumber: string | undefined;
-  public country: string | undefined;
-  public year: number | undefined;
-  public description: string | undefined;
-  public image: any | undefined;
-}
+  public scottNumber: string = '';
+  public country: string = '';
+  public year: number = 0;
+  public description: string = '';
+  public image: File | undefined;
+  public imageUrl: string = '';
+} 

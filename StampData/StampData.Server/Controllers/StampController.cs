@@ -18,7 +18,7 @@ namespace StampData.Server.Controllers
         // GET: <StampController>
         [HttpGet]
         public IEnumerable<Stamp> Get()
-        {
+        {            
             return StampInformationList.Get.StampList;
         }
 
@@ -26,7 +26,7 @@ namespace StampData.Server.Controllers
         [HttpGet("{id}")]
         public Stamp Get(int id)
         {
-            
+
             return StampInformationList.Get.StampList.FirstOrDefault(s => s.ID == id);
         }
         
@@ -36,11 +36,30 @@ namespace StampData.Server.Controllers
             return StampInformationList.Get.StampList.FirstOrDefault(s => s.ScottNumber == scottNumber && s.Country.Equals(country, StringComparison.OrdinalIgnoreCase));
         }
 
+        public class StampForm : Stamp
+        {
+            public IFormFile image { get; set; }
+        }
+
         // POST <StampController>
         [HttpPost]
-        public void Post([FromForm] Stamp stamp)
+        public IActionResult Post([FromForm] StampForm stamp)
         {
+            if (stamp.image != null)
+            {
+                byte[] fileBytes = null;
+                using (var stream = new MemoryStream())
+                {
+                    stamp.image.CopyTo(stream);
+                    fileBytes = stream.ToArray();
+                }
+                if (!stamp.ImportFile(fileBytes, stamp.image.FileName, stamp.image.ContentType))
+                {
+                    return BadRequest();
+                }
+            }
             StampInformationList.Get.AddStamp(stamp);
+            return Ok();
         }
 
         // PUT <StampController>/5
@@ -54,6 +73,20 @@ namespace StampData.Server.Controllers
         public void Delete(int id)
         {
             StampInformationList.Get.DeleteStamp(id);
+        }
+
+        [HttpGet("GetImage/{id}")]
+        public IActionResult GetImage(int id)
+        {
+            Stamp stamp = StampInformationList.Get.StampList.FirstOrDefault(s => s.ID == id);
+
+            if (stamp.ImageUrl != null)
+            {
+                Byte[] b = System.IO.File.ReadAllBytes(stamp.ImageUrl);   // You can use your own method over here.         
+                string type = Path.GetExtension(stamp.ImageUrl);
+                return File(b, $"image/{type}");
+            }
+            return Ok();
         }
     }
 }

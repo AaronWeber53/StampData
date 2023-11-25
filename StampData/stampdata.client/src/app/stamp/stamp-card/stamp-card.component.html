@@ -1,8 +1,8 @@
 <div (click)="OpenDetails($event)" class="card text-white bg-primary mb-3 btn-primary" style="max-width: 20rem;">
     <div class="card-header">{{ stamp.scottNumber }} - {{ stamp.country }}</div>
-    <div class="card-body">
-        <p class="card-text"> {{ stamp.year }}</p>
-        <img src="" alt="Placeholder text" />
-        <p class="card-text"> {{ stamp.description }}</p>
+    <div class="card-body p-2">
+        <p class="card-text mb-1"> {{ stamp.year }}</p>
+        <img [src]="imageURL" class="img-fluid" alt="Placeholder text" />
+        <p class="card-text m-1"> {{ stamp.description }}</p>
     </div>
 </div>
