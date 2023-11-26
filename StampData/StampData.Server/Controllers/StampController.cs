@@ -40,7 +40,7 @@ namespace StampData.Server.Controllers
 
         public class StampForm : Stamp
         {
-            public IFormFile image { get; set; }
+            public IFormFile? image { get; set; }
         }
 
         // POST <StampController>

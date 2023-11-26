@@ -10,7 +10,6 @@ export class StampService {
   constructor(private http: HttpClient) { }
   getHeaders() {
     const headers = new HttpHeaders()
-      .append('Content-Type', 'application/json')
       .append('Access-Control-Allow-Headers', 'Content-Type')
       .append('Access-Control-Allow-Methods', '*')
       .append('Access-Control-Allow-Origin', '*');
@@ -51,5 +50,13 @@ export class StampService {
   updateStamp(stamp: Stamp) {
     let headers = this.getHeaders();
     return this.http.put<Stamp>('/api/stamp', stamp, { headers });
+  }
+
+  deleteStamp(stamp: Stamp) {
+    let headers = this.getHeaders();
+    if (stamp.id) {
+      return this.http.delete<number>('/api/stamp/' + String(stamp.id));
+    }
+    return null;
   }
 }

@@ -10,4 +10,8 @@ export class Stamp {
   public description: string = '';
   public image: File | undefined;
   public imageUrl: string = '';
+  get imageURL() {
+    return '/api/stamp/GetImage/' + this.id;
+
+  }
 } 

@@ -19,3 +19,19 @@ th, td {
 table {
     margin: 0 auto;
 }
+
+
+
+.nav-item{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.nav-link{
+    flex:1;
+}
+
+.navbar.nav {
+    justify-content: space-evenly;
+}

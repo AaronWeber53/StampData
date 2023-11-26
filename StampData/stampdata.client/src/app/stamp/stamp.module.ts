@@ -7,8 +7,9 @@ import { StampCardListComponent } from './stamp-card-list/stamp-card-list.compon
 import { StampCardComponent } from './stamp-card/stamp-card.component';
 import { StampModalComponent } from './stamp-modal/stamp-modal.component';
 import { CountryAutoFillService } from './service/country-auto-fill.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterService } from './service/filter.service';
 
 
 
@@ -24,11 +25,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbPopoverModule 
   ],
   providers: [
     StampService,
-    CountryAutoFillService
+    CountryAutoFillService,
+    FilterService
   ],
 
 })

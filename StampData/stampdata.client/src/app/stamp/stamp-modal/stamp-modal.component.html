@@ -1,7 +1,8 @@
 <div class="modal-content">
     <div class="modal-header">
         <h5 *ngIf="isAdd" class="modal-title">Add Stamp</h5>
-        <h5 *ngIf="!isAdd" class="modal-title">Edit Stamp {{ stamp.id }}</h5>
+        <button type="button" class="btn btn-primary btn-sm me-2" *ngIf="!canEdit" (click)="allowFormEdit()"><i class="bi bi-pen"></i></button>
+        <h5 *ngIf="!isAdd" class="modal-title ms-1">Edit Stamp {{ stamp.id }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="activeModal.close('Close click')">
             <span aria-hidden="true"></span>
         </button>
@@ -30,8 +31,11 @@
             </div>
             <div class="form-group  has-danger">
                 <label for="formFile" class="form-label">Image</label>
-                <input class="form-control" type="file" id="formFile" #filePicker (change)="onImagePicked($event)" [ngClass]="{'is-invalid': form.image.invalid && form.image.touched}">
+                <input class="form-control" type="file" accept="image/*" id="formFile" #filePicker (change)="onImagePicked($event)" [ngClass]="{'is-invalid': form.image.invalid && form.image.touched}">
                 <small *ngIf="form.image.hasError('required') && form.image.touched && form.image.invalid" class="invalid-feedback">File is required.</small>
+            </div>
+            <div *ngIf="!isAdd" class="p-1">
+                <img [src]="imageURL" class="img-fluid d-block mx-auto" alt="Placeholder text" />
             </div>
             <div class="form-group">
                 <label for="description" class="form-label">Description</label>
@@ -42,12 +46,26 @@
     <div class="modal-footer">
         <button type="button"
                 *ngIf="!isAdd"
-                data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Delete Stamp"
+                placement="bottom"
+                [autoClose]="false"
+                [ngbPopover]="popContent"
+                [popoverTitle]="popTitle"
+                triggers="manual"
+                #p="ngbPopover"
+                (click)="p.open()"
                 class="mr-auto btn btn-danger"
                 style="margin-right: auto;">
             <i class="bi bi-trash"></i>
+            <ng-template #popContent>
+                <button type="button" class="btn btn-danger" (click)="onDelete()">Confirm</button>
+                <button type="button" class="btn btn-info float-right" (click)="p.close()">Cancel</button>
+            </ng-template>
+            <ng-template #popTitle>
+                Are you sure you want to delete this stamp?
+            </ng-template>
         </button>
-        <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="StampForm.invalid">Save Stamp</button>
+
+        <button type="button" class="btn btn-primary" *ngIf="canEdit" (click)="onSubmit()" [disabled]="StampForm.invalid">Save Stamp</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="activeModal.close('Close click')">Close</button>
     </div>
 </div>

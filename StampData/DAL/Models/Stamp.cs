@@ -26,7 +26,8 @@ namespace DAL.Models
 
         public bool Equals(Stamp? other)
         {
-            return this.Country.Equals(other.Country, StringComparison.OrdinalIgnoreCase) && this.ScottNumber == other.ScottNumber;
+            bool blankRecord = (ScottNumber == null && other.ScottNumber == null) || (Country == null && other.Country == null);
+            return blankRecord || (this.Country?.Equals(other.Country, StringComparison.OrdinalIgnoreCase) ?? false) && this.ScottNumber == other.ScottNumber;
         }
 
         private const string StampFileDirectory = @"./json/images/";
