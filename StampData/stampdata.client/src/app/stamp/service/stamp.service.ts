@@ -8,9 +8,17 @@ import { Stamp } from '../model/stamp';
 export class StampService {
 
   constructor(private http: HttpClient) { }
-
+  getHeaders() {
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json')
+      .append('Access-Control-Allow-Headers', 'Content-Type')
+      .append('Access-Control-Allow-Methods', '*')
+      .append('Access-Control-Allow-Origin', '*');
+    return headers;
+  }
   getStampList() {
-    return this.http.get<Stamp[]>('api/stamp');
+    let headers = this.getHeaders();
+    return this.http.get<Stamp[]>('api/stamp', { headers });
   }
 
   updateOrAddStamp(stamp: Stamp) {
@@ -23,7 +31,7 @@ export class StampService {
   }
 
   addStamp(stamp: Stamp) {
-    let options = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
+    let headers = this.getHeaders();
 
     var formData = new FormData();
     if (stamp.image) {
@@ -37,10 +45,11 @@ export class StampService {
     formData.append('year', stamp.year.toString());
     formData.append('description', stamp.description);
     formData.append('imageUrl', stamp.imageUrl);
-    return this.http.post('/api/stamp', formData);
+    return this.http.post('/api/stamp', formData, {headers});
   }
 
   updateStamp(stamp: Stamp) {
-    return this.http.put<Stamp>('/api/stamp', stamp);
+    let headers = this.getHeaders();
+    return this.http.put<Stamp>('/api/stamp', stamp, { headers });
   }
 }

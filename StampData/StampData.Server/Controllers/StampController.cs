@@ -1,10 +1,12 @@
 ﻿using DAL.DataAccess;
 using DAL.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StampData.Server.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("MyPolicy")]
     [ApiController]
     public class StampController : ControllerBase
     {

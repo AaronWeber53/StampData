@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavBarService } from './shared/nav-bar.service';
 import { NavBarData } from './shared/nav-bar-data';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',

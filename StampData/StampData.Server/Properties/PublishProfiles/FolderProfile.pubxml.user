@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\aqwer\Documents\StampData\StampData\StampData.Server\bin\Release\net8.0\publish\</_PublishTargetUrl>
+    <History>True|2023-11-26T00:37:14.9044377Z;True|2023-11-25T18:32:59.9165812-06:00;True|2023-11-25T18:23:28.2160566-06:00;True|2023-11-25T18:19:56.3930141-06:00;True|2023-11-25T18:12:41.7305675-06:00;True|2023-11-25T16:50:11.4284915-06:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>
