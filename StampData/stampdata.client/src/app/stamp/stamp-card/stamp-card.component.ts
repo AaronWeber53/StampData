@@ -16,7 +16,7 @@ export class StampCardComponent implements OnInit  {
   @Input({ required: true }) stamp: Stamp = new Stamp();
   @Output() onEditEvent = new EventEmitter<boolean>();
   get imageURL() {
-    return '/api/stamp/GetImage/' + this.stamp.id;
+    return 'api/stamp/GetImage/' + this.stamp.id;
   }
 
   OpenDetails($event: any) {

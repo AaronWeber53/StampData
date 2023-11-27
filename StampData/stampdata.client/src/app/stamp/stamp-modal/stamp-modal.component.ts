@@ -28,7 +28,7 @@ export class StampModalComponent implements OnInit {
     return this.StampForm.controls;
   }
   get imageURL() {
-    return '/api/stamp/GetImage/' + this.stamp.id;
+    return 'api/stamp/GetImage/' + this.stamp.id;
   }
   StampForm = new FormGroup({
     scottNumber: new FormControl(this.stamp?.scottNumber, [Validators.required]),

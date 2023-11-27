@@ -34,7 +34,7 @@ export class StampService {
 
     var formData = new FormData();
     if (stamp.image) {
-      let type = stamp.image.name.substr(stamp.image.name.lastIndexOf('.') + 1)
+      let type = stamp.image?.name?.substr(stamp.image.name.lastIndexOf('.') + 1)?.toLowerCase();
       if (type == 'jpg' || type == 'png' || type == 'jpeg') {
         formData.append('image', stamp.image);
       }
@@ -44,18 +44,18 @@ export class StampService {
     formData.append('year', stamp.year.toString());
     formData.append('description', stamp.description);
     formData.append('imageUrl', stamp.imageUrl);
-    return this.http.post('/api/stamp', formData, {headers});
+    return this.http.post('api/stamp', formData, {headers});
   }
 
   updateStamp(stamp: Stamp) {
     let headers = this.getHeaders();
-    return this.http.put<Stamp>('/api/stamp', stamp, { headers });
+    return this.http.put<Stamp>('api/stamp', stamp, { headers });
   }
 
   deleteStamp(stamp: Stamp) {
     let headers = this.getHeaders();
     if (stamp.id) {
-      return this.http.delete<number>('/api/stamp/' + String(stamp.id));
+      return this.http.delete<number>('api/stamp/' + String(stamp.id));
     }
     return null;
   }
