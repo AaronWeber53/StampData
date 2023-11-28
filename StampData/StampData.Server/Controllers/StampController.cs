@@ -21,7 +21,7 @@ namespace StampData.Server.Controllers
         [HttpGet]
         public IEnumerable<Stamp> Get()
         {            
-            return StampInformationList.Get.StampList;
+            return StampInformationList.Get.StampList.OrderBy(s => s.ScottNumber);
         }
 
         // GET <StampController>/5

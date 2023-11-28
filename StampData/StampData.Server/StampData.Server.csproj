@@ -8,6 +8,7 @@
     <SpaRoot>..\stampdata.client</SpaRoot>
     <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
     <SpaProxyServerUrl>https://localhost:4200</SpaProxyServerUrl>
+    <Trimming></Trimming>
   </PropertyGroup>
 
   <ItemGroup>

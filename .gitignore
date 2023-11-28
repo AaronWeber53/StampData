@@ -6,3 +6,5 @@ StampData/stampdata.client/obj/*
 StampData/stampdata.client/stampdata.client.esproj.user
 /StampData/DAL/bin/Debug/net8.0
 /StampData/DAL/obj
+/StampData/StampData.Server/StampData.Server.csproj.user
+/StampData/StampData.Server/Properties/PublishProfiles/FolderProfile.pubxml.user
