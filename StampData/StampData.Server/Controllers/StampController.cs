@@ -18,9 +18,31 @@ namespace StampData.Server.Controllers
         }
 
         // GET: <StampController>
+
+        public class StampFilter
+        {
+            public string? ScottNumber { get; set; } = null;
+            public short? YearLow { get; set; } = null;
+            public short? YearHigh { get; set; } = null;
+            public string? Country { get; set; } = null;
+        }
+        //[HttpGet]
+        //public IEnumerable<Stamp> Get()
+        //{
+        //    return StampInformationList.Get.StampList.OrderBy(s => s.ScottNumber);
+        //}
+        
         [HttpGet]
-        public IEnumerable<Stamp> Get()
-        {            
+        public IEnumerable<Stamp> Get([FromQuery] StampFilter stampFilter)
+        {
+            var results = from s in StampInformationList.Get.StampList
+                          where 
+                          (string.IsNullOrEmpty(stampFilter.Country) || stampFilter.Country.Equals(s.Country, StringComparison.OrdinalIgnoreCase)) &&
+                          (string.IsNullOrEmpty(stampFilter.ScottNumber) || stampFilter.ScottNumber.Equals(s.ScottNumber, StringComparison.OrdinalIgnoreCase)) &&
+                          (stampFilter.YearLow == null || s.Year > stampFilter.YearLow) &&
+                          (stampFilter.YearHigh == null || s.Year < stampFilter.YearHigh)
+                          select s;
+
             return StampInformationList.Get.StampList.OrderBy(s => s.ScottNumber);
         }
 

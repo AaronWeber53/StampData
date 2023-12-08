@@ -1,13 +1,14 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Stamp } from '../model/stamp';
+import { FilterService } from './filter.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StampService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private filter: FilterService) { }
   getHeaders() {
     const headers = new HttpHeaders()
       .append('Access-Control-Allow-Headers', 'Content-Type')
@@ -17,7 +18,7 @@ export class StampService {
   }
   getStampList() {
     let headers = this.getHeaders();
-    return this.http.get<Stamp[]>('api/stamp', { headers });
+    return this.http.get<Stamp[]>('api/stamp' + this.filter.QueryString, { headers });
   }
 
   updateOrAddStamp(stamp: Stamp) {

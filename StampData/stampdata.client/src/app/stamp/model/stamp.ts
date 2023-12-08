@@ -12,6 +12,5 @@ export class Stamp {
   public imageUrl: string = '';
   get imageURL() {
     return '/api/stamp/GetImage/' + this.id;
-
   }
 } 

@@ -10,6 +10,7 @@ import { CountryAutoFillService } from './service/country-auto-fill.service';
 import { NgbModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterService } from './service/filter.service';
+import { StampFilterComponent } from './stamp-filter/stamp-filter.component';
 
 
 
@@ -19,6 +20,7 @@ import { FilterService } from './service/filter.service';
     StampCardListComponent,
     StampCardComponent,
     StampModalComponent,
+    StampFilterComponent,
   ],
   imports: [
     CommonModule,

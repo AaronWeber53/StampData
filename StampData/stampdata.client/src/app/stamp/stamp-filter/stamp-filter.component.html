@@ -1,0 +1,42 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">Filter Stamps</h5>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12 justify-content-between">
+                <label for="typeahead-format">Country</label>
+                <input id="typeahead-format"
+                       name="filterAccessor.country"
+                       type="text"
+                       [(ngModel)]="filterAccessor.country"
+                       class="form-control"
+                       [ngbTypeahead]="search" />
+            </div>
+            <div class="col-12 justify-content-between">
+                <div class="col-6">
+                    <label for="scottNumber" class="form-label mt-2">Scott Number</label>
+                    <input type="text" class="form-control" id="scottNumber" [(ngModel)]="filterAccessor.scottNumber">
+
+                </div>
+            </div>
+            <div class="col-12 d-flex justify-content-between">
+                <div class="col-4">
+                    <label for="exampleInputEmail1" class="form-label mt-2">Year Low</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1" [(ngModel)]="filterAccessor.yearlow">
+
+                </div>
+                <div class="col-4">
+                    <label for="exampleInputEmail1" class="form-label mt-2">Year High</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1" [(ngModel)]="filterAccessor.yearHigh">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        
+    </div>
+</div>
+
+

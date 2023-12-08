@@ -9,10 +9,18 @@
     </div>
     <div class="modal-body">
         <form [formGroup]="StampForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <label for="scottNumber" class="form-label">Scott Number</label>
-                <input id="scottNumber" name="scottNumber" type="text" class="form-control" required="required" formControlName="scottNumber" [ngClass]="{'is-invalid': form.scottNumber.invalid && form.scottNumber.touched}">
-                <small *ngIf="form.scottNumber.hasError('required') && form.scottNumber.touched && form.scottNumber.invalid" class="invalid-feedback">Number is required.</small>
+            <div class="form-row d-flex justify-content-between">
+                <div class="form-group col-md-5">
+                    <label for="scottNumber" class="form-label">Scott Number</label>
+                    <input id="scottNumber" name="scottNumber" type="text" class="form-control" required="required" formControlName="scottNumber" [ngClass]="{'is-invalid': form.scottNumber.invalid && form.scottNumber.touched}">
+                    <small *ngIf="form.scottNumber.hasError('required') && form.scottNumber.touched && form.scottNumber.invalid" class="invalid-feedback">Number is required.</small>
+                </div>
+
+                <div class="form-group col-md-5">
+                    <label for="year" class="form-label">Year</label>
+                    <input id="year" name="year" type="text" class="form-control" [ngClass]="{'is-invalid': form.year.invalid && form.year.touched}" required="required" maxlength="4" formControlName="year">
+                    <small *ngIf="form.year.touched && form.year.invalid" class="invalid-feedback">Year is required.</small>
+                </div>
             </div>
             <div class="form-group">
                 <label for="typeahead-format">Country</label>
@@ -24,12 +32,7 @@
                        formControlName="country" />
                 <small *ngIf="form.country.hasError('required') && form.country.touched && form.country.invalid" class="invalid-feedback">Country is required.</small>
             </div>
-            <div class="form-group  has-danger">
-                <label for="year" class="form-label">Year</label>
-                <input id="year" name="year" type="text" class="form-control" [ngClass]="{'is-invalid': form.year.invalid && form.year.touched}" required="required" maxlength="4" formControlName="year">
-                <small *ngIf="form.year.touched && form.year.invalid" class="invalid-feedback">Year is required.</small>
-            </div>
-            <div class="form-group  has-danger">
+            <div class="form-group">
                 <label for="formFile" class="form-label">Image</label>
                 <input class="form-control" type="file" accept="image/*" id="formFile" #filePicker (change)="onImagePicked($event)" [ngClass]="{'is-invalid': form.image.invalid && form.image.touched}">
                 <small *ngIf="form.image.hasError('required') && form.image.touched && form.image.invalid" class="invalid-feedback">File is required.</small>

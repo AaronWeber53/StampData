@@ -7,6 +7,7 @@ import { NavBarData } from '../../shared/nav-bar-data';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { StampModalComponent } from '../stamp-modal/stamp-modal.component';
 import { FilterService } from '../service/filter.service';
+import { StampFilterComponent } from '../stamp-filter/stamp-filter.component';
 
 @Component({
   selector: 'app-stamp-card-list',
@@ -17,13 +18,8 @@ export class StampCardListComponent implements OnInit, OnDestroy {
   constructor(
     private service: StampService,
     private navBarService: NavBarService,
-    private modalService: NgbModal,
-    private filterService: FilterService
+    private modalService: NgbModal
   ) { }
-
-  get filterAccessor() {
-    return this.filterService;
-  }
 
   StampList: Stamp[] = [];
   navBarData: NavBarData = new NavBarData("Add Stamp", ($event: any) => {
@@ -36,8 +32,7 @@ export class StampCardListComponent implements OnInit, OnDestroy {
     });
   }, "bi-file-earmark-plus");
   navBarFilter: NavBarData = new NavBarData("", ($event: any) => {
-    const modalRef = this.modalService.open(StampModalComponent, { centered: true });
-    modalRef.componentInstance.stamp = new Stamp();
+    const modalRef = this.modalService.open(StampFilterComponent, { centered: true });
   }, "bi-filter");
 
 

@@ -10,4 +10,7 @@ export class FilterService {
   public scottNumber: string = '';
   public yearlow: string = '';
   public yearHigh: string = '';
+  get QueryString(): string {
+    return '?country=' + this.country + '&scottNumber=' + this.scottNumber + '&yearLow=' + this.yearlow + '&yearHigh=' + this.yearHigh;
+  }
 }

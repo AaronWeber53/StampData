@@ -43,6 +43,7 @@ export class StampModalComponent implements OnInit {
       this.isAdd = true;
       this.canEdit = true;
       this.stamp.country = this.filterService.country;
+      this.stamp.year = Number(this.filterService.yearlow) ?? '';
     }
 
 
