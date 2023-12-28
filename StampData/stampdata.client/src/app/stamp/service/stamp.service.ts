@@ -50,7 +50,20 @@ export class StampService {
 
   updateStamp(stamp: Stamp) {
     let headers = this.getHeaders();
-    return this.http.put<Stamp>('api/stamp', stamp, { headers });
+    var formData = new FormData();
+    if (stamp.image) {
+      let type = stamp.image?.name?.substr(stamp.image.name.lastIndexOf('.') + 1)?.toLowerCase();
+      if (type == 'jpg' || type == 'png' || type == 'jpeg') {
+        formData.append('image', stamp.image);
+      }
+    }
+    formData.append('scottNumber', stamp.scottNumber);
+    formData.append('country', stamp.country);
+    formData.append('year', stamp.year.toString());
+    formData.append('description', stamp.description);
+    formData.append('imageUrl', stamp.imageUrl);
+
+    return this.http.put<Stamp>('api/stamp/' + stamp.id, formData, { headers });
   }
 
   deleteStamp(stamp: Stamp) {

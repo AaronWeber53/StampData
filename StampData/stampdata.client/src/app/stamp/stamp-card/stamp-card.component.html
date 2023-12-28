@@ -3,6 +3,6 @@
     <div class="card-body p-2">
         <p class="card-text mb-1">{{ stamp.country }} - {{ stamp.year }}</p>
         <img [src]="imageURL" class="img-fluid" alt="Placeholder text" />
-        <p class="card-text m-1"> {{ stamp.description }}</p>
+        <p class="card-text m-1"> {{ stamp.description?.substring(0,25) }}</p>
     </div>
 </div>

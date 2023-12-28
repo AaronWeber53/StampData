@@ -74,6 +74,18 @@ namespace DAL.DataAccess
                 Save();
             }
         }
+
+        public void UpdateStamp(Stamp stamp, Stamp newStamp)
+        {
+            if (StampList.Contains(stamp))
+            {
+                stamp.ScottNumber = newStamp.ScottNumber;
+                stamp.Year = newStamp.Year;
+                stamp.Country = newStamp.Country;
+                stamp.Description = newStamp.Description;
+                Save();
+            }
+        }
         
         public void DeleteStamp(int stampID)
         {

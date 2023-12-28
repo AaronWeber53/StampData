@@ -33,6 +33,12 @@ export class StampCardListComponent implements OnInit, OnDestroy {
   }, "bi-file-earmark-plus");
   navBarFilter: NavBarData = new NavBarData("", ($event: any) => {
     const modalRef = this.modalService.open(StampFilterComponent, { centered: true });
+    modalRef.componentInstance.onCloseEvent.subscribe((updated: boolean) => {
+      if (updated) {
+        this.updateStampList();
+      }
+    });
+
   }, "bi-filter");
 
 
@@ -41,14 +47,19 @@ export class StampCardListComponent implements OnInit, OnDestroy {
       this.StampList = data
     });
   }
-
+  windowScrolled = false;
   ngOnInit(): void {
 
     this.updateStampList();
     this.navBarService.addNavComponent(this.navBarFilter);
     this.navBarService.addNavComponent(this.navBarData);
+    window.addEventListener('scroll', () => {
+      this.windowScrolled = window.pageYOffset !== 0;
+    });
   }
-
+  scrollToTop(): void {
+    window.scrollTo(0, 0);
+  }
   ngOnDestroy(): void {
     this.navBarService.removeNavComponent(this.navBarFilter);
     this.navBarService.removeNavComponent(this.navBarData);

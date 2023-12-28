@@ -43,7 +43,7 @@ namespace StampData.Server.Controllers
                           (stampFilter.YearHigh == null || s.Year < stampFilter.YearHigh)
                           select s;
 
-            return StampInformationList.Get.StampList.OrderBy(s => s.ScottNumber);
+            return results.OrderBy(s => s.ScottNumber);
         }
 
         // GET <StampController>/5
@@ -88,8 +88,32 @@ namespace StampData.Server.Controllers
 
         // PUT <StampController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Stamp value)
+        public IActionResult Put(int id, [FromForm] StampForm stamp)
         {
+            Stamp foundStamp = StampInformationList.Get.StampList.FirstOrDefault(x => x.ID.Value == id);
+            if (foundStamp == null)
+            {
+                return BadRequest();
+            }
+
+            if (stamp.image != null)
+            {
+                byte[] fileBytes = null;
+                using (var stream = new MemoryStream())
+                {
+                    stamp.image.CopyTo(stream);
+                    fileBytes = stream.ToArray();
+                }
+                if (!stamp.ImportFile(fileBytes, stamp.image.FileName, stamp.image.ContentType))
+                {
+                    return BadRequest();
+                }
+                foundStamp.ImageUrl = stamp.ImageUrl;
+            }
+            StampInformationList.Get.UpdateStamp(foundStamp, stamp);
+            
+
+            return Ok();
         }
 
         // DELETE <StampController>/5

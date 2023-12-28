@@ -73,7 +73,7 @@ export class StampModalComponent implements OnInit {
 
   onSubmit() {
     console.log('submit')
-    if (this.StampForm.invalid || !this.StampForm.dirty || this.StampForm.disabled) {
+    if (this.StampForm.invalid || (!this.StampForm.dirty && !this.form?.image?.value) || this.StampForm.disabled) {
       return;
     }
 

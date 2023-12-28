@@ -10,3 +10,16 @@
 .filterbox {
     align-items: center;
 }
+
+.to-top-hidden {
+  display: none;
+}
+
+.show-scrollTop {
+  display:block !important;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0.5em;
+  z-index: 1200;
+}
